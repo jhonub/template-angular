@@ -1,0 +1,80 @@
+<ng-template #mdEmpleado let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Empleado</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        
+      <form [formGroup]="formEmpleado">
+          <div class="form-row">
+            <div class="form-group col-md-4 ">
+                <label >dni</label>
+                <input type="number" formControlName="dni" class="form-control"
+                [ngClass]="{ 'is-invalid': formValidStatus && formValidator.dni.errors }"
+                >
+                <div *ngIf="formValidStatus && formValidator.dni.errors" class="invalid-feedback">
+                    <div *ngIf="formValidator.dni.errors.required">Obligatorio</div>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label >apellido paterno</label>
+                <input type="text" formControlName="apellidoPaterno" class="form-control"
+                [ngClass]="{ 'is-invalid': formValidStatus && formValidator.apellidoPaterno.errors }"
+                >
+                <div *ngIf="formValidStatus && formValidator.apellidoPaterno.errors" class="invalid-feedback">
+                    <div *ngIf="formValidator.apellidoPaterno.errors.required">Obligatorio</div>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label >apellido materno</label>
+                <input type="text" formControlName="apellidoMaterno" class="form-control"
+                [ngClass]="{ 'is-invalid': formValidStatus && formValidator.apellidoMaterno.errors }"
+                >
+                <div *ngIf="formValidStatus && formValidator.apellidoMaterno.errors" class="invalid-feedback">
+                    <div *ngIf="formValidator.apellidoMaterno.errors.required">Obligatorio</div>
+                </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+                <label >nombres</label>
+                <input type="text" formControlName="nombres" class="form-control"
+                [ngClass]="{ 'is-invalid': formValidStatus && formValidator.nombres.errors }"
+                >
+                <div *ngIf="formValidStatus && formValidator.nombres.errors" class="invalid-feedback">
+                    <div *ngIf="formValidator.nombres.errors.required">Obligatorio</div>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label >telefono</label>
+                <input type="text"  formControlName="telefono" class="form-control"
+                [ngClass]="{ 'is-invalid': formValidStatus && formValidator.telefono.errors }"
+                >
+                <div *ngIf="formValidStatus && formValidator.telefonoerrors" class="invalid-feedback">
+                    <div *ngIf="formValidator.telefono.errors.required">Obligatorio</div>
+                </div>
+            </div>
+            <div class="form-group col-md-5">
+                <label >direccion</label>
+                <input type="text"  formControlName="direccion" class="form-control"
+                [ngClass]="{ 'is-invalid': formValidStatus && formValidator.direccion.errors }"
+                >
+                <div *ngIf="formValidStatus && formValidator.direccion.errors" class="invalid-feedback">
+                    <div *ngIf="formValidator.direccion.errors.required">Obligatorio</div>
+                </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-around">
+            <button type="button" class="btn btn-info" (click)="saveSubmitEmpleado()">Guardar</button>
+            <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">salir</button>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+  <button class="btn btn-success mb-2 mr-2" *ngIf="typeButton == 1"  (click)="callModalService(mdEmpleado)">{{ nameButton }}</button>
+  <button class="btn btn-info mb-2 mr-2" *ngIf="typeButton == 2"  (click)="callModalService(mdEmpleado)">{{ nameButton }}</button>
